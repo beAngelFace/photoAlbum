@@ -5,8 +5,9 @@
   "scripts": {
     "start": "node app.js",
     "dev":    "nodemon app.js --ext js, jsx, json",
-    "dbr" : "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize-cli db:seed:all"
-  },
+    "dbr" : "npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize-cli db:seed:all",
+    "sid" : " sequelize db:seed:undo:all && sequelize db:seed:all"
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",
