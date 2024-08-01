@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const {User} = require('../db/models');
 const bcrypt = require('bcrypt');
 const generateTokens = require('../utils/generateTokens');
@@ -68,6 +69,7 @@ router.delete('/logout', (req, res) => {
     res
         .clearCookie(jwtConfig.refresh.type)
         .json({accessToken: ''})
+
 });
 
 module.exports = router;
