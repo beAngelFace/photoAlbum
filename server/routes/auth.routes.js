@@ -20,7 +20,7 @@ router.post('/registration', async (req, res) => {
             const user = (await User.create({name, email, password: await bcrypt.hash(password, 10)})).get();
 
             const {accessToken, refreshToken} = generateTokens({user});
-            console.log(user);
+            // console.log(user);
 
 
             res
@@ -30,19 +30,44 @@ router.post('/registration', async (req, res) => {
         }
         
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(500).json({error: error.message})
     }
-
-
 });
 
 
-router.post('./authorization', (req, res) => {
+router.post('/authorization', async (req, res) => {
+    try {
+        const { email, password} = req.body;
 
+        if (email.trim() === ''|| 
+            password.trim() === '') {
+            return res.status(400).json({message: 'Заполните все поля'})
+        }
+
+        const user = (await User.findOne({where: {email}})).get();
+        const isMatch = await bcrypt.compare(password, user.password)
+
+        if (user && isMatch) {
+            const {accessToken, refreshToken} = generateTokens({user});
+
+            res
+                .status(200)
+                .cookie(jwtConfig.refresh.type, refreshToken, {httpOnly: true, maxAge: jwtConfig.refresh.expiresIn})
+                .json({accessToken, user})
+        } else {
+            return res.status(400).json({message: 'Неверные почта или пароль!'})
+        }
+
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
 });
 
 router.delete('/logout', (req, res) => {
-
+    // HTTP заголовок Set-Cookie max-age=0
+    res
+        .clearCookie(jwtConfig.refresh.type)
+        .json({accessToken: ''})
 });
 
 module.exports = router;
