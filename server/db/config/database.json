@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "your_database",
+    "username": "benya",
+    "password": "123",
+    "database": "Album",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "your_username",
-    "password": "your_password",
-    "database": "your_test_database",
+    "username": "root",
+    "password": null,
+    "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "mysql"
   },
   "production": {
-    "username": "your_username",
-    "password": "your_password",
-    "database": "your_production_database",
+    "username": "root",
+    "password": null,
+    "database": "database_production",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "mysql"
   }
 }
