@@ -83,17 +83,17 @@ export default function Albums({ user }) {
       </button>
       <ul>
         {albums.map(album => (
-          <li key={album.id}>
-            <div>
-              {album.title} - <img src={album.cover} alt={album.title} />
-            </div>
+          <li key={album.id} className="album-item">
+            <img src={album.cover} alt={album.title} />
+            <div className="album-title">{album.title}</div>
             <div className="album-actions">
               <Link to={`/albums/${album.id}/photos`}>Просмотр фотографий</Link>
-              {user.id === album.userId && 
-              <>
-              <button onClick={() => editAlbum(album)}>Редактировать</button>
-              <button onClick={() => deleteAlbum(album.id)}>Удалить</button>
-              </>}
+              {user.id === album.userId && (
+                <>
+                  <button onClick={() => editAlbum(album)}>Редактировать</button>
+                  <button onClick={() => deleteAlbum(album.id)}>Удалить</button>
+                </>
+              )}
             </div>
           </li>
         ))}
