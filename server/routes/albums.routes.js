@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const { where } = require('sequelize'); для чего?
+
 const {Album} = require('../db/models');
 const verifyAccessToken = require('../middleware/verifyAccessToken')
 
@@ -16,7 +16,7 @@ router.route('/')
         try {
             const {title, cover, userId} = req.body;
 
-            // const {user} = res.locals;
+            
 
             if (title && cover) {
                 const newAlbum = (await Album.create({title, cover, userId})).get()

@@ -1,41 +1,38 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import HomePage from "./pages/HomePage";
 import Authorization from "./pages/Authorization";
 import Registration from "./pages/Registration";
 import NotFound from "./pages/NotFound";
 import Logout from "./pages/Logout";
 import Nav from "./components/Nav";
 import axiosInstance, { setAccessToken } from "./service/axiosInstance";
+import Photos from "./pages/Photos"; // Импорт нового компонента
 
 function App() {
-
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     axiosInstance.get('/tokens/refresh')
-      .then(({data}) => {
+      .then(({ data }) => {
         setAccessToken(data.accessToken);
         setUser(data.user);
-      })
-  }, [])
-  
-  
-  
+      });
+  }, []);
+
   return (
     <BrowserRouter>
-
-      <Nav user={user}/>
-
+      <Nav user={user} />
       <Routes>
-        <Route path="/" element={<Home user={user}/>} />
-        <Route path="auth/authorization" element={<Authorization  setUser={setUser}/>} />
-        <Route path="auth/registration" element={<Registration setUser={setUser}/>} />
-        <Route path="/auth/logout" element={<Logout user={user} setUser={setUser}/>} />
-        <Route path="*" element={<NotFound/>} />
+        <Route path="/" element={<HomePage user={user} />} />
+        <Route path="auth/authorization" element={<Authorization setUser={setUser} />} />
+        <Route path="auth/registration" element={<Registration setUser={setUser} />} />
+        <Route path="/auth/logout" element={<Logout user={user} setUser={setUser} />} />
+        <Route path="/albums/:albumId/photos" element={<Photos user={user} />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
