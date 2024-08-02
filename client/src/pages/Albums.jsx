@@ -89,8 +89,11 @@ export default function Albums({ user }) {
             </div>
             <div className="album-actions">
               <Link to={`/albums/${album.id}/photos`}>Просмотр фотографий</Link>
+              {user.id === album.userId && 
+              <>
               <button onClick={() => editAlbum(album)}>Редактировать</button>
               <button onClick={() => deleteAlbum(album.id)}>Удалить</button>
+              </>}
             </div>
           </li>
         ))}
