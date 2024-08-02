@@ -46,7 +46,7 @@ export default function Photos({ user }) {
   return (
     <div className="container">
       <h1>Фотографии</h1>
-      <button onClick={() => navigate(-1)}>Назад</button>
+      <button onClick={() => navigate(-1)}>Вернуться к альбомам</button>
       {user && (
         <>
           <input 
@@ -71,9 +71,12 @@ export default function Photos({ user }) {
               <img src={photo.photo} alt={photo.description} />
               {photo.description}
             </div>
-            {user && (
-              <button onClick={() => deletePhoto(photo.id)}>Удалить</button>
-            )}
+            {user.id  && (
+                <>
+                  
+                  <button onClick={() => deletePhoto(photo.id)}>Удалить</button>
+                </>
+              )}
           </li>
         ))}
       </ul>

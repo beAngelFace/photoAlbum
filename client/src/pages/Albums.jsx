@@ -65,7 +65,7 @@ export default function Albums({ user }) {
 
   return (
     <div>
-      <h1>Альбомы</h1>
+      <h1>Все альбомы</h1>
       <input 
         type="text" 
         value={title} 
