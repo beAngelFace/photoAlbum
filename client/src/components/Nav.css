@@ -1,0 +1,29 @@
+/* Nav.css */
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #3498db;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  nav a:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }
+  
+  nav a.active {
+    background-color: #1abc9c;
+  }
+  

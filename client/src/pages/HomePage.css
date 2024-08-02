@@ -1,0 +1,47 @@
+/* HomePage.css */
+
+.home-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .auth-forms {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .auth-form {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+  }
+  
+  .auth-form h2 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+  
+  .auth-form p {
+    margin-bottom: 15px;
+    color: #7f8c8d;
+  }
+  
+  .auth-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .auth-link:hover {
+    background-color: #2980b9;
+  }
+  
