@@ -67,12 +67,12 @@ export default function Photos({ user }) {
       <ul>
         {photos.map(photo => (
           <li key={photo.id}>
-            <div>
-              <img src={photo.photo} alt={photo.description} />
-              {photo.description}
-            </div>
+            <img src={photo.photo} alt={photo.description} />
+            <div className="description">{photo.description}</div>
             {user && (
-              <button onClick={() => deletePhoto(photo.id)}>Удалить</button>
+              <div className="album-actions">
+                <button onClick={() => deletePhoto(photo.id)}>Удалить</button>
+              </div>
             )}
           </li>
         ))}
