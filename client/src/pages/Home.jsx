@@ -1,7 +1,13 @@
-import React from 'react'
-
-export default function Home() {
+/* eslint-disable react/prop-types */
+function HomePage({user}) {
   return (
-    <div>Домой</div>
-  )
+    <>
+      <h1>Домашняя страница
+        
+      </h1>
+      <h2>Здравствуй, {user ? user.name : "Незнакомец"}</h2>
+    </>
+  );
 }
+
+export default HomePage;

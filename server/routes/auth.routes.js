@@ -6,6 +6,8 @@ const generateTokens = require('../utils/generateTokens');
 const jwtConfig = require('../config/jwtConfig')
 
 router.post('/registration', async (req, res) => {
+    console.log(11111111111);
+    
     try {
         const {name, email, password} = req.body;
 
@@ -15,13 +17,15 @@ router.post('/registration', async (req, res) => {
             return res.status(400).json({message: 'Заполните все поля'})
         }
         const userInDb = await User.findOne({where: {email}})
+        console.log( userInDb);
         if (userInDb) {
             return res.status(400).json({message: 'Такой пользователь уже существует'})
         } else {
             const user = (await User.create({name, email, password: await bcrypt.hash(password, 10)})).get();
 
+
             const {accessToken, refreshToken} = generateTokens({user});
-            // console.log(user);
+            console.log(user);
 
 
             res
