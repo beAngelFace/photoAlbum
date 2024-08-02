@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance, { setAccessToken } from "../service/axiosInstance";
 
 /* eslint-disable react/prop-types */
-function LogoutPage({user, setUser}) {
+function Logout({user, setUser}) {
 
     const navigate = useNavigate();
 
@@ -28,4 +28,4 @@ function LogoutPage({user, setUser}) {
     );
 }
 
-export default LogoutPage;
+export default Logout;
