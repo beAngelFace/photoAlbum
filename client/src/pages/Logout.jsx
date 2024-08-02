@@ -22,8 +22,8 @@ function Logout({user, setUser}) {
 
     return (
         <>
-            <h1>Logout for {user.name}</h1>
-            <button onClick={logoutUser}>Yes, exit!</button>
+            <h1>{user.name}, вы точно хотите выйти?</h1>
+            <button onClick={logoutUser}>Да, я за новыми фотками!</button>
         </> 
     );
 }

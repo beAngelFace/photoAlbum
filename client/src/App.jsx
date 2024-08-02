@@ -7,7 +7,7 @@ import NotFound from "./pages/NotFound";
 import Logout from "./pages/Logout";
 import Nav from "./components/Nav";
 import axiosInstance, { setAccessToken } from "./service/axiosInstance";
-import Photos from "./pages/Photos"; // Импорт нового компонента
+import Photos from "./pages/Photos"; 
 
 function App() {
   const [user, setUser] = useState(null);
