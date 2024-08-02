@@ -37,7 +37,7 @@ export default function Photos({ user }) {
   const deletePhoto = async (id) => {
     try {
       await axiosInstance.delete(`/photos/${id}`);
-      setPhotos(photos.filter(photo => photo.id !== id));
+      setPhotos(photos.filter(p => p.id !== id));
     } catch (error) {
       console.error('Ошибка при удалении фотографии:', error);
     }
@@ -47,19 +47,23 @@ export default function Photos({ user }) {
     <div className="container">
       <h1>Фотографии</h1>
       <button onClick={() => navigate(-1)}>Назад</button>
-      <input 
-        type="text" 
-        value={photo} 
-        onChange={(e) => setPhoto(e.target.value)} 
-        placeholder="URL фотографии"
-      />
-      <input 
-        type="text" 
-        value={description} 
-        onChange={(e) => setDescription(e.target.value)} 
-        placeholder="Описание"
-      />
-      <button onClick={addPhoto}>Добавить</button>
+      {user && (
+        <>
+          <input 
+            type="text" 
+            value={photo} 
+            onChange={(e) => setPhoto(e.target.value)} 
+            placeholder="URL фотографии"
+          />
+          <input 
+            type="text" 
+            value={description} 
+            onChange={(e) => setDescription(e.target.value)} 
+            placeholder="Описание"
+          />
+          <button onClick={addPhoto}>Добавить</button>
+        </>
+      )}
       <ul>
         {photos.map(photo => (
           <li key={photo.id}>
@@ -67,7 +71,9 @@ export default function Photos({ user }) {
               <img src={photo.photo} alt={photo.description} />
               {photo.description}
             </div>
-            <button onClick={() => deletePhoto(photo.id)}>Удалить</button>
+            {user && (
+              <button onClick={() => deletePhoto(photo.id)}>Удалить</button>
+            )}
           </li>
         ))}
       </ul>
